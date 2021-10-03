@@ -1,2 +1,5 @@
 repro
 test.db
+.libs/
+data/
+mnt/

@@ -1,0 +1,3 @@
+[submodule "glusterfs"]
+	path = glusterfs
+	url = git@github.com:gluster/glusterfs.git
