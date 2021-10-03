@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gluster-setlk-repro
-        image: docker:5000/gluster-setlk-repro:5
+        image: docker:5000/gluster-setlk-repro:6
         args:
           - /repro
           - /mnt/data/test.db

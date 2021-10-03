@@ -1,15 +1,14 @@
-FROM phusion/baseimage:master
+FROM alpine:3.13.6
 
 WORKDIR /
 
-RUN apt-get update -y && \
-    apt-get install -y build-essential
+RUN apk add gcc make musl-dev
 
 COPY main.c Makefile /
 
 RUN make repro
 
-FROM phusion/baseimage:master
+FROM alpine:3.13.6
 
 COPY --from=0 /repro /repro
 
