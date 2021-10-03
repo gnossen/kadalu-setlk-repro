@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gluster-setlk-repro
+  labels:
+    app: gluster-setlk-repro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gluster-setlk-repro
+  template:
+    metadata:
+      labels:
+        app: gluster-setlk-repro
+    spec:
+      containers:
+      - name: gluster-setlk-repro
+        image: docker:5000/gluster-setlk-repro:5
+        args:
+          - /repro
+          - /mnt/data/test.db
+        volumeMounts:
+        - mountPath: "/mnt/data"
+          name: data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: gluster-setlk-repro-pv
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: gluster-setlk-repro-pv
+spec:
+  storageClassName: kadalu.single1
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
