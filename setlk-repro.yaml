@@ -27,16 +27,16 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: gluster-setlk-repro-pv
+          claimName: gluster-setlk-repro-pv2
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: gluster-setlk-repro-pv
+  name: gluster-setlk-repro-pv2
 spec:
-  storageClassName: kadalu.single1
+  storageClassName: kadalu.db-single1
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
