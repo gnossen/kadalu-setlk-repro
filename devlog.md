@@ -8,3 +8,19 @@ reproduce locally. Once I can do that, I can figure out the exact location where
 there is an issue and _maybe_ create a patch to fix it.
 
 Okay. I think I just build gluster locally and can run it.
+
+And... I can't reproduce it locally. Wonderful. I just used a single,
+non-replicated volume this type. I guess the next step is to try the specific
+tag that is being used by kadalu.
+
+And now I've verified that I can't reproduce this from the commit immediately
+before May 20th. What's worse is that I can't find a release version from the
+date that this gluster build is purportedly from. This is starting to look like
+an issue either with Kadalu's vendored gluster or its configuration of it.
+
+Debugging this is going to get tricky.
+
+Well look at this. This issue seems to describe my problem exactly:
+https://github.com/kadalu/kadalu/issues/287
+
+Unfortunately, following its advice has _not_ fixed the issue.
